@@ -4449,6 +4449,13 @@ Editor.prototype = {
         });
         $textContainerElem.on('compositionend', function () {
             // 输入法结束输入
+            console.log('输入结束');
+            let userAgent = navigator.userAgent;
+            if (/Edge/.test(userAgent)) {
+                _this.change && _this.change();
+            } else if (/Trident/.test(userAgent)) {
+                _this.change && _this.change();
+            }
             compositionEnd = true;
         });
 
